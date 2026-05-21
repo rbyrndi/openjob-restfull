@@ -2,6 +2,7 @@ exports.up = (pgm) => {
     pgm.createTable('companies', {
         id: { type: 'VARCHAR(50)', primaryKey: true },
         name: { type: 'VARCHAR(150)', notNull: true },
+        location: { type: 'VARCHAR(150)', notNull: true },
         description: { type: 'TEXT' },
         website: { type: 'VARCHAR(100)' },
         logo_url: { type: 'TEXT' },

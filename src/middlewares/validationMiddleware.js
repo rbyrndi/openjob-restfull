@@ -9,7 +9,7 @@ const validateBody = (schema) => {
             const errorMessage = error.details.map((detail) => detail.message).join(', ');
 
             return res.status(400).json({
-                status: 'fail',
+                status: 'failed',
                 message: `Gagal memvalidasi data: ${errorMessage}`,
             });
         }
