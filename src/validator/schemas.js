@@ -1,7 +1,9 @@
 const Joi = require('joi');
 
 const userRegisterSchema = Joi.object({
-    name: Joi.string().max(150),
+    name: Joi.string().max(150).required().messages({
+        'any.required': 'Nama wajib diisi',
+    }),
     full_name: Joi.string().max(150),
     email: Joi.string().email().required().messages({
         'string.email': 'Format email tidak valid',
@@ -11,9 +13,9 @@ const userRegisterSchema = Joi.object({
         'string.min': 'Password minimal harus 6 karakter',
         'any.required': 'Password wajib diisi',
     }),
-    role: Joi.string().valid('user', 'admin').default('user'),
-}).or('name', 'full_name').messages({
-    'object.missing': 'Nama lengkap wajib diisi',
+    role: Joi.string().required().messages({
+        'any.required': 'Role wajib diisi',
+    }),
 });
 
 const loginSchema = Joi.object({
